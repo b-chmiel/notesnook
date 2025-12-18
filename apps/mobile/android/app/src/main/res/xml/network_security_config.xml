@@ -1,7 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <network-security-config>
-    <domain-config cleartextTrafficPermitted="true">
-        <domain includeSubdomains="true">10.0.2.2</domain>
-        <domain includeSubdomains="true">localhost</domain>
+    <!-- Allow app to trust user-installed certificates -->
+    <base-config cleartextTrafficPermitted="false">
+        <trust-anchors>
+            <!-- Trust system CA store -->
+            <certificates src="system" />
+            <!-- Allow user-installed CA store -->
+            <certificates src="user" />
+        </trust-anchors>
+    </base-config>
+    <!-- Allow your domain + all subdomains -->
+    <domain-config cleartextTrafficPermitted="false">
+        <domain includeSubdomains="true">dev.lan</domain>
+        <trust-anchors>
+            <certificates src="system"/>
+            <certificates src="user"/>
+        </trust-anchors>
     </domain-config>
 </network-security-config>
