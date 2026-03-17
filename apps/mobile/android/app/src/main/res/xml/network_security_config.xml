@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <network-security-config>
     <!-- Allow app to trust user-installed certificates -->
-    <base-config cleartextTrafficPermitted="false">
+    <base-config cleartextTrafficPermitted="true">
         <trust-anchors>
             <!-- Trust system CA store -->
             <certificates src="system" />
@@ -10,7 +10,7 @@
         </trust-anchors>
     </base-config>
     <!-- Allow your domain + all subdomains -->
-    <domain-config cleartextTrafficPermitted="false">
+    <domain-config cleartextTrafficPermitted="true">
         <domain includeSubdomains="true">dev.lan</domain>
         <trust-anchors>
             <certificates src="system"/>
